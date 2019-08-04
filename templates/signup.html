@@ -8,6 +8,14 @@
     <div class="box">
         <form method="POST" action="/signup">
             <div class="field">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notification is-danger">
+                            {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                    <form method="POST" action="/signup">
                 <div class="control">
                     <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
                 </div>
